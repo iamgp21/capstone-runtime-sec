@@ -1,0 +1,21 @@
+falco:
+
+# [Stable] `json_output`
+  #
+  # -- When enabled, Falco will output alert messages and rules file
+  # loading/validation results in JSON format, making it easier for downstream
+  # programs to process and consume the data. By default, this option is disabled.
+  json_output: true
+
+  # [Stable] `syslog_output`
+  #
+  # -- Send logs to syslog.
+  syslog_output:
+    enabled: false
+
+  # [Stable] `http_output`
+  #
+  # -- Send logs to an HTTP endpoint or webhook.
+  http_output:
+    enabled: true
+    url: "http://falcosidekick.falcosidekick.svc.cluster.local:2801" # falcosidekick URL

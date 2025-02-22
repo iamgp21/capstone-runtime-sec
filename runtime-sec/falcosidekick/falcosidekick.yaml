@@ -1,0 +1,40 @@
+# -- number of running pods
+replicaCount: 1
+
+config:
+  # -- DEBUG environment variable
+  debug: true
+  
+  loki:
+    # -- Loki <http://host:port>, if not `empty`, Loki is *enabled*
+    hostport: "https://logs-prod-028.grafana.net:443"
+    # -- user for Grafana Logs
+    user: "721469"
+    # -- API Key for Grafana Logs
+    apikey: "<API_KEY_GRAFANA_CLOUD_LOKI_TENANT>"
+    # -- Loki endpoint URL path, more info: <https://grafana.com/docs/loki/latest/api/#post-apiprompush>
+    endpoint: "/loki/api/v1/push"
+    # -- Loki tenant, if not `empty`, Loki tenant is *enabled*
+    tenant: "<GRAFANA_CLOUD_LOKI_TENANT>"
+    # -- comma separated list of fields to use as labels additionally to rule, source, priority, tags and custom_fields
+    extralabels: ""
+    # -- a list of comma separated custom headers to add, syntax is "key:value,key:value"
+    customheaders: ""
+    # -- minimum priority of event to use this output, order is `emergency\|alert\|critical\|error\|warning\|notice\|informational\|debug or ""`
+    minimumpriority: ""
+    # -- if true, checkcert flag will be ignored (server cert will always be checked)
+    mutualtls: false
+    # -- check if ssl certificate of the output is valid
+    checkcert: true
+    # -- dashboard for Grafana
+    grafanaDashboard:
+      # -- enabled specifies whether this dashboard should be deployed.
+      enabled: false
+      # --configmaps to be deployed that contain a grafana dashboard.
+      configMap:
+        # -- name specifies the name for the configmap.
+        name: falcosidekick-loki-dashboard-grafana
+        # -- namespace specifies the namespace for the configmap.
+        namespace: ""
+        # -- folder where the dashboard is stored by grafana.
+        folder: ""
